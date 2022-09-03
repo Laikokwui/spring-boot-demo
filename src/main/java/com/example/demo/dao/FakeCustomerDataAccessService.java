@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class FakeCustomerDataAccessService {
+public class FakeCustomerDataAccessService implements CustomerDao {
     private static List<Customer> DB = new ArrayList<>();
 
     @Override
