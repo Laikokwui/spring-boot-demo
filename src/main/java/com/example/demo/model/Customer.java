@@ -2,8 +2,14 @@ package com.example.demo.model;
 
 import java.util.UUID;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document("customer")
 public class Customer {
+    @Id
     private final UUID id;
+    
     private final String name;
     private final String address;
     private final String phone;
