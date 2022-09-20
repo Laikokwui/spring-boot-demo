@@ -5,18 +5,18 @@ import java.util.UUID;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("customer")
+@Document(collection = "customer")
 public class Customer {
     @Id
-    private final UUID id;
+    private UUID id;
     
-    private final String name;
-    private final String address;
-    private final String phone;
+    private String fullName;
+    private String address;
+    private String phone;
 
-    public Customer(UUID id, String name, String address, String phone) {
+    public Customer(UUID id, String fullName, String address, String phone) {
         this.id = id;
-        this.name = name;
+        this.fullName = fullName;
         this.address = address;
         this.phone = phone;
     }
@@ -25,15 +25,27 @@ public class Customer {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getAddress() {
         return address;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getPhone() {
         return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

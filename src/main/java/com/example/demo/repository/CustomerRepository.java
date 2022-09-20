@@ -8,11 +8,14 @@ import org.springframework.data.mongodb.repository.Query;
 import com.example.demo.model.Customer;
 
 public interface CustomerRepository extends MongoRepository<Customer, String> {
-    @Query("{name:'?0'}")
-    Customer findCustomer(String name);
+    @Query("{fullName:'?0'}")
+    Customer findCustomer(String fullName);
 
-    @Query(value="{name:'?0'}", fields="{'phone' : 1, 'address' : 1}")
+    List<Customer> findById();
+
     List<Customer> findAll();
+
+    List<Customer> findByAddressContaining(String address);
     
     public long count();
 }
