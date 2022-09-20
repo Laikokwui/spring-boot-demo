@@ -22,13 +22,13 @@ import com.example.demo.repository.CustomerRepository;
 
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping("/api")
 public class CustomerController {
 
   @Autowired
   CustomerRepository customerRepository;
 
-  @GetMapping(value = "/customer")
+  @GetMapping("/customer")
   public ResponseEntity<List<Customer>> getAllCustomers() {
     try {
       List<Customer> customers = new ArrayList<Customer>();
@@ -45,12 +45,12 @@ public class CustomerController {
     }
   }
   
-  @GetMapping(value = "/custoemr/{id}")
+  @GetMapping("/customer/{id}")
   public String getCustomerById(@PathVariable("id") String id) {
     return "view Customer";
   }
 
-  @PostMapping(value = "/customer/create")
+  @PostMapping("/customer/create")
   public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
     try {
       Customer _customer = customerRepository.save(new Customer(customer.getId(), customer.getFullName(), customer.getAddress(), customer.getPhone()));
@@ -60,7 +60,7 @@ public class CustomerController {
     }
   }
 
-  @PutMapping(value = "/customer/update/{id}")
+  @PutMapping("/customer/update/{id}")
   public ResponseEntity<Customer> updateCustomer(@PathVariable("id") String id, @RequestBody Customer customer) {
     Optional<Customer> customerData = customerRepository.findById(id);
 
@@ -75,7 +75,7 @@ public class CustomerController {
   }
   }
 
-  @DeleteMapping(value = "/custoemr/{id}")
+  @DeleteMapping("/customer/{id}")
   public ResponseEntity<HttpStatus> deleteCustomer(@PathVariable("id") String id) {
     try {
       customerRepository.deleteById(id);
