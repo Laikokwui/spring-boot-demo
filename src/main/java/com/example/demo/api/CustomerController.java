@@ -43,9 +43,9 @@ public class CustomerController {
     }
   }
   
-  @GetMapping("/customer/hello")
-  public String getCustomerById(@PathVariable("id") String id) {
-    return "customer/index.html";
+  @GetMapping("/")
+  public String getCustomerById() {
+    return "welcome";
   }
 
   @PostMapping("/customer/create")
